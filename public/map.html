@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title> 공간정보 Open-API 서비스 | 일반지도 생성 샘플</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
+<script type="text/javascript" src="http://map.ngii.go.kr/openapi/ngii_wmtsMap.js?apikey=6A69499C155FE6184F86F8AD114F4E3F"></script>
+<script>
+    var map1;
+    window.onload = function(){
+    map1 = new ngii_wmts.map("map1", {zoom : 2});
+    };
+    </script>
+    </head>
+    <body>
+    <div id="map1" style="width:700px;height:700px;"></div>
+    </body>
+    </html>
