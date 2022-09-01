@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/navermaps": "^3.0.17",
+    "antd": "^4.22.8",
     "axios": "^0.27.2",
     "jquery": "^3.6.0",
     "react": "^18.1.0",
@@ -19,6 +20,7 @@
   },
   "scripts": {
     "start": "set PORT=3006 &&  react-scripts --openssl-legacy-provider start",
+    "sstart": "set PORT=3006 &&  react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

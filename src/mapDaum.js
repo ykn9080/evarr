@@ -1,12 +1,15 @@
 /*global kakao*/
 
-import React, { useEffect } from "react";
-import bus from "./images/bus.png";
+import React, { useEffect, useState } from "react";
+import bus from "./images/bus1.svg";
 import axios from "axios";
 import { xmlParse } from "./utils/publicApi";
+import "antd/dist/antd.css";
+import { Spin } from "antd";
 
 const Location = () => {
   var markers = [];
+  const [loading, setLoading] = useState(false);
   const key = process.env.REACT_APP_BUS_LOCATION_KEY;
   const baseurl = process.env.REACT_APP_SERVER;
 
@@ -57,7 +60,7 @@ const Location = () => {
 
     for (var i = 0; i < positions.length; i++) {
       // 마커 이미지의 이미지 크기 입니다
-      var imageSize = new kakao.maps.Size(24, 35);
+      var imageSize = new kakao.maps.Size(50, 40);
 
       // 마커 이미지를 생성합니다
       var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
@@ -110,8 +113,18 @@ const Location = () => {
   };
 
   useEffect(() => {
-    const data = getBusLocation(19);
-    console.log(data);
+    setLoading(true);
+    getBusLocation(19)
+      .then((rsp) => {
+        console.log(rsp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+
     var container = document.getElementById("map");
     var options = {
       center: new kakao.maps.LatLng(37.483683333, 126.925328333),
@@ -164,7 +177,17 @@ const Location = () => {
     polyline.setMap(map);
   }, []);
 
-  return <div id="map"></div>;
+  return (
+    <>
+      <div id="map">
+        {loading && (
+          <div className="spin_center">
+            <Spin />
+          </div>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default Location;
