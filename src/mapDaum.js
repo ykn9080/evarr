@@ -180,12 +180,15 @@ const Location = () => {
   }, []);
 
   return (
-    <div id="map">
-      {loading && (
-        <div className="spin_center">
-          <Spin />
-        </div>
-      )}
+    <div className="mapContainer">
+      <div id="map">
+        {loading && (
+          <div className="spin_center">
+            <Spin />
+          </div>
+        )}
+      </div>
+      <div>hi</div>
     </div>
   );
 };
